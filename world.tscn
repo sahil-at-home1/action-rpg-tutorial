@@ -6,11 +6,6 @@
 [node name="World" type="Node2D"]
 y_sort_enabled = true
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(27, 50, 4, 36, 27, 1, 0, -1, 0, 180, 320, 180, 320, 0, 294, 0, 301, 66, 280, 113, 295, 161, 207, 147, 155, 159, 111, 153, 34, 159, 39, 84, 28, 77, 31, 55)
-
 [node name="Player" parent="." instance=ExtResource("2_gy132")]
 position = Vector2(116, 75)
 
