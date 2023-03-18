@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
-const ACCELERATION: int = 25
-const FRICTION: int = 25 
-const MAX_SPEED: int = 200
+const ACCELERATION: int = 50
+const FRICTION: int = 50 
+const MAX_SPEED: int = 300
 
 func _physics_process(delta):
 	var input: Vector2 = Vector2.ZERO
@@ -11,14 +11,10 @@ func _physics_process(delta):
 	input = input.normalized()
 
 	if input != Vector2.ZERO:
-		velocity += input * ACCELERATION * delta
+		velocity = velocity.move_toward(input * MAX_SPEED, ACCELERATION * delta)
 		velocity.x = clamp(velocity.x, -1 * MAX_SPEED * delta, MAX_SPEED * delta)
 		velocity.y = clamp(velocity.y, -1 * MAX_SPEED * delta, MAX_SPEED * delta)
-		# velocity.x = clamp(velocity.x, 0, MAX_SPEED * delta)
-		# velocity.y = clamp(velocity.y, 0, MAX_SPEED * delta)
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
-		# velocity = Vector2.ZERO
 
-	print(velocity)
 	move_and_collide(velocity)
