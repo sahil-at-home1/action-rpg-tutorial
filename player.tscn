@@ -187,11 +187,11 @@ animation = &"idle_up"
 blend_point_0/node = SubResource("AnimationNodeAnimation_tuuyh")
 blend_point_0/pos = Vector2(-1, 0)
 blend_point_1/node = SubResource("AnimationNodeAnimation_jnavu")
-blend_point_1/pos = Vector2(0, 1)
+blend_point_1/pos = Vector2(0, 1.01)
 blend_point_2/node = SubResource("AnimationNodeAnimation_sxdig")
 blend_point_2/pos = Vector2(1, 0)
 blend_point_3/node = SubResource("AnimationNodeAnimation_2td6x")
-blend_point_3/pos = Vector2(0, -1)
+blend_point_3/pos = Vector2(0, -1.01)
 blend_mode = 1
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_st8xc"]
@@ -210,11 +210,11 @@ animation = &"run_up"
 blend_point_0/node = SubResource("AnimationNodeAnimation_st8xc")
 blend_point_0/pos = Vector2(-1, 0)
 blend_point_1/node = SubResource("AnimationNodeAnimation_542iu")
-blend_point_1/pos = Vector2(0, 1)
+blend_point_1/pos = Vector2(0, 1.01)
 blend_point_2/node = SubResource("AnimationNodeAnimation_jw8f4")
 blend_point_2/pos = Vector2(1, 0)
 blend_point_3/node = SubResource("AnimationNodeAnimation_q2qjo")
-blend_point_3/pos = Vector2(0, -1)
+blend_point_3/pos = Vector2(0, -1.01)
 blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_k205t"]
