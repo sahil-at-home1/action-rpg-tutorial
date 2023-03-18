@@ -1,22 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://bu0iukiwdeeb1"]
+[gd_scene load_steps=3 format=3 uid="uid://bu0iukiwdeeb1"]
 
-[ext_resource type="Texture2D" uid="uid://7x6icwo5ncb" path="res://Action RPG Resources/World/Bush.png" id="1_u8sst"]
-[ext_resource type="Script" path="res://CharacterBody2D.gd" id="2_3llgb"]
-[ext_resource type="Texture2D" uid="uid://wcla3tc7052k" path="res://Action RPG Resources/Player/Player.png" id="2_i8tjy"]
+[ext_resource type="PackedScene" uid="uid://xrgpg8omnfdu" path="res://player.tscn" id="2_gy132"]
+[ext_resource type="PackedScene" uid="uid://wx5qmlqrm1yh" path="res://Bush.tscn" id="2_x50su"]
 
 [node name="World" type="Node2D"]
+y_sort_enabled = true
 
-[node name="Bush" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(16, 16)
-texture = ExtResource("1_u8sst")
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-script = ExtResource("2_3llgb")
-metadata/_edit_group_ = true
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(27, 50, 4, 36, 27, 1, 0, -1, 0, 180, 320, 180, 320, 0, 294, 0, 301, 66, 280, 113, 295, 161, 207, 147, 155, 159, 111, 153, 34, 159, 39, 84, 28, 77, 31, 55)
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-texture_filter = 1
-position = Vector2(92, 63)
-texture = ExtResource("2_i8tjy")
-hframes = 60
+[node name="Player" parent="." instance=ExtResource("2_gy132")]
+position = Vector2(116, 75)
+
+[node name="Bush" parent="." instance=ExtResource("2_x50su")]
+position = Vector2(59, 107)
+
+[node name="Bush2" parent="." instance=ExtResource("2_x50su")]
+position = Vector2(210, 107)
