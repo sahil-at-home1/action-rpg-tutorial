@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://xrgpg8omnfdu"]
+[gd_scene load_steps=26 format=3 uid="uid://xrgpg8omnfdu"]
 
 [ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_aogql"]
 [ext_resource type="Texture2D" uid="uid://wcla3tc7052k" path="res://Action RPG Resources/Player/Player.png" id="2_gh2dr"]
@@ -93,6 +93,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_g7tlv"]
 resource_name = "idle_right"
 length = 0.1
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -170,6 +171,61 @@ _data = {
 "run_up": SubResource("Animation_t7sgq")
 }
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tuuyh"]
+animation = &"idle_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jnavu"]
+animation = &"idle_down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sxdig"]
+animation = &"idle_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2td6x"]
+animation = &"idle_up"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_li6yn"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_tuuyh")
+blend_point_0/pos = Vector2(-1, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_jnavu")
+blend_point_1/pos = Vector2(0, 1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_sxdig")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_2td6x")
+blend_point_3/pos = Vector2(0, -1)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_st8xc"]
+animation = &"run_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_542iu"]
+animation = &"run_down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jw8f4"]
+animation = &"run_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_q2qjo"]
+animation = &"run_up"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_s7ywp"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_st8xc")
+blend_point_0/pos = Vector2(-1, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_542iu")
+blend_point_1/pos = Vector2(0, 1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_jw8f4")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_q2qjo")
+blend_point_3/pos = Vector2(0, -1)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_k205t"]
+states/Idle/node = SubResource("AnimationNodeBlendSpace2D_li6yn")
+states/Idle/position = Vector2(411, 100)
+states/Run/node = SubResource("AnimationNodeBlendSpace2D_s7ywp")
+states/Run/position = Vector2(693, 100)
+states/Start/position = Vector2(178, 100)
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_bdp0n"]
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
 position = Vector2(0, -7)
 script = ExtResource("1_aogql")
@@ -191,3 +247,11 @@ shape = SubResource("CapsuleShape2D_xrrpf")
 libraries = {
 "": SubResource("AnimationLibrary_c74m3")
 }
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_k205t")
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource("AnimationNodeStateMachinePlayback_bdp0n")
+parameters/Idle/blend_position = Vector2(0, 0)
+parameters/Run/blend_position = Vector2(-0.5168, 0.161572)
