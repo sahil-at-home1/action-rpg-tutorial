@@ -843,14 +843,18 @@ cell_quadrant_size = 32
 format = 2
 layer_0/tile_data = PackedInt32Array(-65534, 1, 0, 2, 1, 2, -65532, 131073, 3, -65533, 327681, 0, 327685, 393217, 3, 262149, 1, 0, 262150, 393217, 2, 196614, 1, 0, 327687, 65537, 2, 327686, 65537, 2, 327688, 65537, 2, 327689, 65537, 2, 262153, 65537, 0, 262154, 131073, 0, 327690, 131073, 2, 327682, 1, 3, 327683, 65537, 3, 327684, 65537, 3, 3, 131073, 2, 262151, 327681, 2, 262152, 65537, 0, 196615, 131073, 0)
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="y-sort node" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="Bush" parent="Node2D" instance=ExtResource("2_x50su")]
+[node name="bushes" type="Node2D" parent="y-sort node"]
+y_sort_enabled = true
 position = Vector2(59, 107)
 
-[node name="Bush2" parent="Node2D" instance=ExtResource("2_x50su")]
-position = Vector2(210, 107)
+[node name="Bush" parent="y-sort node/bushes" instance=ExtResource("2_x50su")]
+position = Vector2(0, 0)
 
-[node name="Player" parent="Node2D" instance=ExtResource("2_gy132")]
+[node name="Bush2" parent="y-sort node/bushes" instance=ExtResource("2_x50su")]
+position = Vector2(151, 0)
+
+[node name="Player" parent="y-sort node" instance=ExtResource("2_gy132")]
 position = Vector2(116, 75)
