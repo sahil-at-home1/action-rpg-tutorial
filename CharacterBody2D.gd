@@ -20,7 +20,7 @@ var state: State = State.MOVE
 func _ready() -> void:
 	animation_tree.active = true
 
-func _physics_process(_delta: float) -> void:
+func _process(_delta: float) -> void:
 	match state:
 		State.MOVE:
 			move_state()
