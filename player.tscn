@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bxb1ku6cti386" path="res://hitbox.tscn" id="3_6psau"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xrrpf"]
-radius = 3.0
+radius = 6.0
 height = 12.0
 
 [sub_resource type="Animation" id="Animation_h4hi7"]
@@ -446,6 +446,8 @@ height = 35.0
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 position = Vector2(0, -7)
+collision_layer = 2
+collision_mask = 9
 script = ExtResource("1_aogql")
 metadata/_edit_vertical_guides_ = [-83.0]
 metadata/_edit_group_ = true
@@ -457,8 +459,7 @@ hframes = 60
 frame = 1
 
 [node name="MovementCollision" type="CollisionShape2D" parent="."]
-position = Vector2(0, 10)
-rotation = -1.5708
+position = Vector2(0, 7)
 shape = SubResource("CapsuleShape2D_xrrpf")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -478,6 +479,7 @@ parameters/Run/blend_position = Vector2(-0.5168, 0.161572)
 
 [node name="SwordHitbox" parent="HitboxPivot" instance=ExtResource("3_6psau")]
 position = Vector2(15, 1)
+collision_layer = 16
 
 [node name="CollisionShape2D" parent="HitboxPivot/SwordHitbox" index="0"]
 position = Vector2(0, 1)

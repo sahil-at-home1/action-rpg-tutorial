@@ -38,7 +38,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xo8eg")
 }, {
-"duration": 1.0,
+"duration": 3.0,
 "texture": SubResource("AtlasTexture_ckv47")
 }],
 "loop": false,
@@ -53,8 +53,7 @@ script = ExtResource("1_m1wg5")
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_i2xae")
 animation = &"new_animation"
-frame = 3
-frame_progress = 0.779167
-offset = Vector2(-8, -8)
+frame = 4
+frame_progress = 1.0
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

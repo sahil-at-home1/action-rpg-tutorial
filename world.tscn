@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bpwhwfwrphatk" path="res://Action RPG Resources/World/GrassBackground.png" id="1_fvwtk"]
 [ext_resource type="Texture2D" uid="uid://c5qqlsne7sm3m" path="res://Action RPG Resources/World/DirtTileset.png" id="2_4nj7p"]
 [ext_resource type="PackedScene" uid="uid://cgl2li00kx4nh" path="res://player.tscn" id="2_gy132"]
-[ext_resource type="PackedScene" path="res://Bush.tscn" id="2_x50su"]
+[ext_resource type="PackedScene" uid="uid://wx5qmlqrm1yh" path="res://Bush.tscn" id="2_x50su"]
 [ext_resource type="Texture2D" uid="uid://ce5qb8u0pwxei" path="res://Action RPG Resources/World/CliffTileset.png" id="3_jdhd7"]
 [ext_resource type="PackedScene" uid="uid://c28g6xgbexexh" path="res://grass.tscn" id="6_cghfa"]
 
@@ -337,7 +337,6 @@ texture = ExtResource("2_4nj7p")
 8:4/0/terrains_peering_bit/bottom_side = 0
 8:4/0/terrains_peering_bit/left_side = 0
 8:4/0/terrains_peering_bit/top_side = 0
-10:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_vr6we"]
 terrain_set_0/mode = 0
@@ -808,6 +807,7 @@ texture_region_size = Vector2i(32, 32)
 [sub_resource type="TileSet" id="TileSet_ltgqd"]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 2
 physics_layer_0/physics_material = SubResource("PhysicsMaterial_7ay0w")
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Cliff 0"
@@ -845,38 +845,40 @@ format = 2
 layer_0/tile_data = PackedInt32Array(-65534, 1, 0, 2, 1, 2, -65532, 131073, 3, -65533, 327681, 0, 327685, 393217, 3, 262149, 1, 0, 262150, 393217, 2, 196614, 1, 0, 327687, 65537, 2, 327686, 65537, 2, 327688, 65537, 2, 327689, 65537, 2, 262153, 65537, 0, 262154, 131073, 0, 327690, 131073, 2, 327682, 1, 3, 327683, 65537, 3, 327684, 65537, 3, 3, 131073, 2, 262151, 327681, 2, 262152, 65537, 0, 196615, 131073, 0)
 
 [node name="y-sort node" type="Node2D" parent="."]
+
+[node name="grass" type="Node2D" parent="y-sort node"]
 y_sort_enabled = true
 
-[node name="bushes" type="Node2D" parent="y-sort node"]
+[node name="Grass" parent="y-sort node/grass" instance=ExtResource("6_cghfa")]
+position = Vector2(159, 121)
+
+[node name="Grass2" parent="y-sort node/grass" instance=ExtResource("6_cghfa")]
+position = Vector2(15, 96)
+
+[node name="Grass3" parent="y-sort node/grass" instance=ExtResource("6_cghfa")]
+position = Vector2(107, 55)
+
+[node name="Grass4" parent="y-sort node/grass" instance=ExtResource("6_cghfa")]
+position = Vector2(142, 10)
+
+[node name="Grass5" parent="y-sort node/grass" instance=ExtResource("6_cghfa")]
+position = Vector2(217, 40)
+
+[node name="Grass6" parent="y-sort node/grass" instance=ExtResource("6_cghfa")]
+position = Vector2(170, 121)
+
+[node name="not-grass" type="Node2D" parent="y-sort node"]
+y_sort_enabled = true
+
+[node name="Player" parent="y-sort node/not-grass" instance=ExtResource("2_gy132")]
+position = Vector2(116, 75)
+
+[node name="bushes" type="Node2D" parent="y-sort node/not-grass"]
 y_sort_enabled = true
 position = Vector2(59, 107)
 
-[node name="Bush" parent="y-sort node/bushes" instance=ExtResource("2_x50su")]
+[node name="Bush" parent="y-sort node/not-grass/bushes" instance=ExtResource("2_x50su")]
 position = Vector2(0, 0)
 
-[node name="Bush2" parent="y-sort node/bushes" instance=ExtResource("2_x50su")]
-position = Vector2(151, 0)
-
-[node name="Player" parent="y-sort node" instance=ExtResource("2_gy132")]
-position = Vector2(116, 75)
-
-[node name="Node2D" type="Node2D" parent="y-sort node"]
-y_sort_enabled = true
-
-[node name="Grass" parent="y-sort node/Node2D" instance=ExtResource("6_cghfa")]
-position = Vector2(153, 121)
-
-[node name="Grass2" parent="y-sort node/Node2D" instance=ExtResource("6_cghfa")]
-position = Vector2(15, 96)
-
-[node name="Grass3" parent="y-sort node/Node2D" instance=ExtResource("6_cghfa")]
-position = Vector2(107, 55)
-
-[node name="Grass4" parent="y-sort node/Node2D" instance=ExtResource("6_cghfa")]
-position = Vector2(142, 10)
-
-[node name="Grass5" parent="y-sort node/Node2D" instance=ExtResource("6_cghfa")]
-position = Vector2(217, 40)
-
-[node name="Grass6" parent="y-sort node/Node2D" instance=ExtResource("6_cghfa")]
-position = Vector2(170, 121)
+[node name="Bush2" parent="y-sort node/not-grass/bushes" instance=ExtResource("2_x50su")]
+position = Vector2(204, -76)
