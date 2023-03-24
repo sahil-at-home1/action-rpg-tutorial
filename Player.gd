@@ -7,7 +7,6 @@ const ROLL_SPEED: int = 200
 
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var animation_state = animation_tree.get("parameters/playback")
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 enum State {
 	MOVE,
@@ -16,7 +15,7 @@ enum State {
 	ATTACK,
 }
 
-enum Directions {
+enum Direction {
 	UP,
 	DOWN,
 	LEFT,
@@ -29,13 +28,15 @@ var roll_vector: Vector2 = Vector2.LEFT
 func _ready() -> void:
 	animation_tree.active = true
 	# set up animation roll slowdown method calls
-	var anim_roll_right = $AnimationPlayer.get_animation("roll_right")
-	var track_index = anim_roll_right.add_track(Animation.TYPE_METHOD)
-	anim_roll_right.track_set_path(track_index, ".")
-	anim_roll_right.track_insert_key(track_index, 0.3, {
-		"method": "roll_slowdown",
-		"args": [],
-	}, 0)
+	for direction in Direction:
+		var anim_name: String = "roll_" + String(direction).to_lower()
+		var roll_anim = $AnimationPlayer.get_animation(anim_name)
+		var track_index = roll_anim.add_track(Animation.TYPE_METHOD)
+		roll_anim.track_set_path(track_index, ".")
+		roll_anim.track_insert_key(track_index, 0.4, {
+			"method": "roll_slowdown",
+			"args": [],
+		}, 0)
 
 func _process(_delta: float) -> void:
 	# if self.state == State.ROLL or self.state == State.ROLL_SLOWDOWN:
@@ -84,7 +85,7 @@ func attack_state() -> void:
 
 func roll_slowdown() -> void: 
 	self.state = State.ROLL_SLOWDOWN
-	self.velocity = self.velocity.move_toward(Vector2.ZERO, FRICTION)
+	self.velocity = self.velocity.move_toward(Vector2.ZERO, FRICTION * 2)
 	print("slowing!")
 	self.move_and_slide()
 
