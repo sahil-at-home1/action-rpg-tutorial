@@ -1,7 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://3yn3n65m5y7b"]
+[gd_scene load_steps=13 format=3 uid="uid://s4nyjejjmh8p"]
 
 [ext_resource type="Texture2D" uid="uid://hsrlidlykd0b" path="res://Action RPG Resources/Effects/EnemyDeathEffect.png" id="1_rvcvl"]
-[ext_resource type="Script" path="res://scripts_and_scenes/effects/effect.gd" id="2_scpxd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nxktr"]
 atlas = ExtResource("1_rvcvl")
@@ -86,4 +85,3 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_5fun5")
 frame = 9
 frame_progress = 1.0
-script = ExtResource("2_scpxd")

@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://cwyfp2pjt2udg"]
+[gd_scene load_steps=8 format=3 uid="uid://4tjjhi7h4t81"]
 
 [ext_resource type="Texture2D" uid="uid://cgqe1y0i7iok7" path="res://Action RPG Resources/Effects/GrassEffect.png" id="1_wspnj"]
-[ext_resource type="Script" path="res://scripts_and_scenes/effects/effect.gd" id="2_h67v6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mmp3x"]
 atlas = ExtResource("1_wspnj")
@@ -51,4 +50,3 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_dom72")
 frame = 1
 frame_progress = 0.761504
-script = ExtResource("2_h67v6")
