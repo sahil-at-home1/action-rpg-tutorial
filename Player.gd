@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
-const ACCELERATION: int = 15
-const FRICTION: int = 15
-const MAX_SPEED: int = 150
-const ROLL_SPEED: int = 200
+@export var ACCELERATION: int = 15
+@export var FRICTION: int = 15
+@export var MAX_SPEED: int = 150
+@export var ROLL_SPEED: int = 200
 
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var animation_state = animation_tree.get("parameters/playback")

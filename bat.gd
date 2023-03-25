@@ -3,6 +3,7 @@ extends CharacterBody2D
 const FRICTION: float = 200 
 @onready var knockback: Vector2 = Vector2.ZERO
 @onready var hurtbox: Area2D = $Hurtbox
+@onready var stats: Node = $Stats
 
 func _ready():
 	hurtbox.set_collision_layer_value(PlayerVars.collision_map["enemy_hurtbox"], true)

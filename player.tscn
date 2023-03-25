@@ -539,7 +539,7 @@ graph_offset = Vector2(-74.792, -11)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ao27k"]
 height = 35.0
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D"]
 position = Vector2(0, -7)
 collision_layer = 2
 collision_mask = 9

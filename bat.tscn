@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://syo2abhms8br"]
+[gd_scene load_steps=14 format=3 uid="uid://syo2abhms8br"]
 
 [ext_resource type="Script" path="res://bat.gd" id="1_jtpjw"]
 [ext_resource type="Texture2D" uid="uid://cq7xoowo67v77" path="res://Action RPG Resources/Enemies/Bat.png" id="1_pl645"]
 [ext_resource type="Texture2D" uid="uid://dtv3y8t4k5gw2" path="res://Action RPG Resources/Shadows/SmallShadow.png" id="2_wonys"]
 [ext_resource type="PackedScene" path="res://hurtbox.tscn" id="3_hbwq3"]
+[ext_resource type="PackedScene" uid="uid://4f2shvhhtvhp" path="res://stats.tscn" id="5_l5wtk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4h6sp"]
 atlas = ExtResource("1_pl645")
@@ -64,7 +65,7 @@ script = ExtResource("1_jtpjw")
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_2hfjq")
 autoplay = "default"
-frame_progress = 0.712935
+frame_progress = 0.447788
 offset = Vector2(0, -12)
 
 [node name="shadow_sprite" type="Sprite2D" parent="."]
@@ -79,6 +80,9 @@ shape = SubResource("CircleShape2D_6ueas")
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 position = Vector2(0, -13)
 shape = SubResource("CapsuleShape2D_0hc62")
+
+[node name="Stats" parent="." instance=ExtResource("5_l5wtk")]
+max_health = 3
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 
