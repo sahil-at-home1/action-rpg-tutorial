@@ -7,6 +7,10 @@ const ROLL_SPEED: int = 200
 
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var animation_state = animation_tree.get("parameters/playback")
+@onready var state: State = State.MOVE
+@onready var roll_vector: Vector2 = Vector2.LEFT
+@onready var sword_hitbox: Area2D = $HitboxPivot/SwordHitbox
+
 
 enum State {
 	MOVE,
@@ -21,9 +25,6 @@ enum Direction {
 	LEFT,
 	RIGHT,
 }
-
-var state: State = State.MOVE
-var roll_vector: Vector2 = Vector2.LEFT
 
 func _ready() -> void:
 	animation_tree.active = true
@@ -61,6 +62,7 @@ func move_state() -> void:
 
 	if input != Vector2.ZERO:
 		roll_vector = input # store direction player was facing
+		sword_hitbox.knockback_vector = input
 		animation_tree.set("parameters/Idle/blend_position", input)
 		animation_tree.set("parameters/Run/blend_position", input)
 		animation_tree.set("parameters/Attack/blend_position", input)
