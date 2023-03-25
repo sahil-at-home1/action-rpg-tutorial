@@ -11,13 +11,13 @@ config_version=5
 [application]
 
 config/name="action-rpg-tutorial"
-run/main_scene="res://world.tscn"
+run/main_scene="res://scripts_and_scenes/world/world.tscn"
 config/features=PackedStringArray("4.0", "Mobile")
 config/icon="res://icon.svg"
 
 [autoload]
 
-PlayerVars="*res://player_vars.gd"
+PlayerVars="*res://scripts_and_scenes/player/player_vars.gd"
 
 [display]
 

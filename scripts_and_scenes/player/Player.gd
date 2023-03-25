@@ -8,7 +8,7 @@ extends CharacterBody2D
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var animation_state = animation_tree.get("parameters/playback")
 @onready var state: State = State.MOVE
-@onready var roll_vector: Vector2 = Vector2.LEFT
+@onready var roll_vector: Vector2 = Vector2.DOWN
 @onready var sword_hitbox: Area2D = $HitboxPivot/SwordHitbox
 
 

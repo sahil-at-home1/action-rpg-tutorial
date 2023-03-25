@@ -1,7 +1,7 @@
 extends Node2D
 
 func create_grass_effect():
-	var grass_effect_scene: PackedScene = load("res://GrassEffect.tscn")
+	var grass_effect_scene: PackedScene = load("res://scripts_and_scenes/effects/grass_effect.tscn")
 	var grass_effect: Node = grass_effect_scene.instantiate()
 	var world: Node = get_tree().current_scene
 	world.add_child(grass_effect)

@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://cwyfp2pjt2udg"]
+
+[ext_resource type="Texture2D" uid="uid://cgqe1y0i7iok7" path="res://Action RPG Resources/Effects/GrassEffect.png" id="1_wspnj"]
+[ext_resource type="Script" path="res://scripts_and_scenes/effects/effect.gd" id="2_h67v6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mmp3x"]
+atlas = ExtResource("1_wspnj")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c3tk0"]
+atlas = ExtResource("1_wspnj")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4uy4k"]
+atlas = ExtResource("1_wspnj")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u7lmw"]
+atlas = ExtResource("1_wspnj")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eqt8w"]
+atlas = ExtResource("1_wspnj")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dom72"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mmp3x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c3tk0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4uy4k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u7lmw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eqt8w")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="grass_effect" type="AnimatedSprite2D"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_dom72")
+frame = 1
+frame_progress = 0.761504
+script = ExtResource("2_h67v6")

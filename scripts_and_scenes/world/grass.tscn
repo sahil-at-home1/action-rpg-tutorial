@@ -1,8 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c28g6xgbexexh"]
+[gd_scene load_steps=5 format=3]
 
-[ext_resource type="Script" path="res://grass.gd" id="1_hn2as"]
+[ext_resource type="Script" path="res://scripts_and_scenes/world/grass.gd" id="1_hn2as"]
 [ext_resource type="Texture2D" uid="uid://bme46xuk4spxv" path="res://Action RPG Resources/World/Grass.png" id="1_yste0"]
-[ext_resource type="PackedScene" uid="uid://btw2rjrvteisl" path="res://hurtbox.tscn" id="3_dliu7"]
+[ext_resource type="PackedScene" uid="uid://btw2rjrvteisl" path="res://scripts_and_scenes/boxes/hurtbox.tscn" id="3_dliu7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_twi8i"]
 size = Vector2(14.25, 13)
