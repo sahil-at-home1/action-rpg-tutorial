@@ -576,7 +576,6 @@ parameters/Run/blend_position = Vector2(-0.5168, 0.161572)
 
 [node name="SwordHitbox" parent="HitboxPivot" instance=ExtResource("3_6psau")]
 position = Vector2(15, 1)
-collision_layer = 16
 script = ExtResource("4_fwq44")
 
 [node name="CollisionShape2D" parent="HitboxPivot/SwordHitbox" index="0"]

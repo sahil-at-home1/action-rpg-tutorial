@@ -64,7 +64,7 @@ script = ExtResource("1_jtpjw")
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_2hfjq")
 autoplay = "default"
-frame_progress = 0.912962
+frame_progress = 0.0581953
 offset = Vector2(0, -12)
 
 [node name="shadow_sprite" type="Sprite2D" parent="."]
