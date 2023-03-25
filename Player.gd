@@ -86,19 +86,19 @@ func attack_state() -> void:
 func roll_slowdown() -> void: 
 	self.state = State.ROLL_SLOWDOWN
 	self.velocity = self.velocity.move_toward(Vector2.ZERO, FRICTION * 2)
-	print("slowing!")
+	# print("slowing!")
 	self.move_and_slide()
 
 func roll_state() -> void:
 	# self.velocity = self.roll_vector * MAX_SPEED
 	self.velocity = self.roll_vector * ROLL_SPEED
-	print("rolling!")
+	# print("rolling!")
 	self.move_and_slide()
 	animation_state.travel("Roll")
 
 func _on_animation_tree_animation_finished(anim_name):
 	if "roll" in anim_name:
-		print("stopping!")
+		# print("stopping!")
 		self.velocity = Vector2.ZERO
 		state = State.MOVE
 	elif "attack" in anim_name:

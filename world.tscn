@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://bu0iukiwdeeb1"]
+[gd_scene load_steps=13 format=3 uid="uid://bu0iukiwdeeb1"]
 
 [ext_resource type="Texture2D" uid="uid://bpwhwfwrphatk" path="res://Action RPG Resources/World/GrassBackground.png" id="1_fvwtk"]
 [ext_resource type="Texture2D" uid="uid://c5qqlsne7sm3m" path="res://Action RPG Resources/World/DirtTileset.png" id="2_4nj7p"]
 [ext_resource type="PackedScene" uid="uid://cgl2li00kx4nh" path="res://player.tscn" id="2_gy132"]
 [ext_resource type="PackedScene" uid="uid://wx5qmlqrm1yh" path="res://Bush.tscn" id="2_x50su"]
 [ext_resource type="Texture2D" uid="uid://ce5qb8u0pwxei" path="res://Action RPG Resources/World/CliffTileset.png" id="3_jdhd7"]
+[ext_resource type="PackedScene" uid="uid://ohagn4ihsow6" path="res://bat.tscn" id="5_psko0"]
 [ext_resource type="PackedScene" uid="uid://c28g6xgbexexh" path="res://grass.tscn" id="6_cghfa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rpkot"]
@@ -807,7 +808,7 @@ texture_region_size = Vector2i(32, 32)
 [sub_resource type="TileSet" id="TileSet_ltgqd"]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
-physics_layer_0/collision_mask = 2
+physics_layer_0/collision_mask = 34
 physics_layer_0/physics_material = SubResource("PhysicsMaterial_7ay0w")
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Cliff 0"
@@ -869,6 +870,17 @@ position = Vector2(170, 121)
 
 [node name="not-grass" type="Node2D" parent="y-sort node"]
 y_sort_enabled = true
+
+[node name="bats" type="Node2D" parent="y-sort node/not-grass"]
+
+[node name="Bat" parent="y-sort node/not-grass/bats" instance=ExtResource("5_psko0")]
+position = Vector2(189, 38)
+
+[node name="Bat2" parent="y-sort node/not-grass/bats" instance=ExtResource("5_psko0")]
+position = Vector2(203, 106)
+
+[node name="Bat3" parent="y-sort node/not-grass/bats" instance=ExtResource("5_psko0")]
+position = Vector2(42, 69)
 
 [node name="Player" parent="y-sort node/not-grass" instance=ExtResource("2_gy132")]
 position = Vector2(116, 75)
