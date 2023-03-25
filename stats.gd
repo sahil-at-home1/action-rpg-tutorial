@@ -1,13 +1,18 @@
 extends Node
 
-@export var max_health = 1
-var health = max_health
+@export var max_health: int = 1
+@onready var health: int = max_health: 
+	get = get_health, set = set_health
+		
+signal health_depleted
 
-# Called when the node enters the scene tree for the first time.
+func get_health() -> int:
+	return health
+
+func set_health(value: int) -> void:
+	health = value
+	if health <= 0:
+		health_depleted.emit()
+
 func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
 	pass
