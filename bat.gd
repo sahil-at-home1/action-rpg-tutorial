@@ -20,7 +20,7 @@ func _physics_process(delta):
 func _on_hurtbox_area_entered(area: Area2D):
 	knockback = area.knockback_vector * 100
 	# godot convention: call down, signal up (on node tree)
-	stats.set_health(stats.health - 1)
+	stats.set_health(stats.health - area.damage)
 
 func _on_health_depleted() -> void:
 	print("health depleted!")

@@ -1,4 +1,4 @@
-extends Area2D
+extends Hitbox
 
 @onready var knockback_vector = Vector2.ZERO
 
