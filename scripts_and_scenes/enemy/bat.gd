@@ -1,9 +1,16 @@
 extends CharacterBody2D
 
+const death_effect_scene: PackedScene = preload("res://scripts_and_scenes/effects/bat_death_effect.tscn")
 const FRICTION: float = 200 
+
 @onready var knockback: Vector2 = Vector2.ZERO
 @onready var hurtbox: Area2D = $Hurtbox
 @onready var stats: Node = $Stats
+
+func create_effect(caller: Node, effect_scene: PackedScene):
+	var effect: Node = effect_scene.instantiate()
+	caller.get_parent().add_child(effect)
+	effect.global_position = caller.global_position
 
 func _ready():
 	stats.health_depleted.connect(_on_health_depleted)
@@ -24,4 +31,5 @@ func _on_hurtbox_area_entered(area: Area2D):
 
 func _on_health_depleted() -> void:
 	print("health depleted!")
+	create_effect(self, death_effect_scene)
 	queue_free()

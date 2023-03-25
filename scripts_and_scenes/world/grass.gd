@@ -1,12 +1,12 @@
 extends Node2D
 
-func create_grass_effect():
-	var grass_effect_scene: PackedScene = load("res://scripts_and_scenes/effects/grass_effect.tscn")
-	var grass_effect: Node = grass_effect_scene.instantiate()
-	var world: Node = get_tree().current_scene
-	world.add_child(grass_effect)
-	grass_effect.global_position = self.global_position
+const grass_effect_scene: PackedScene = preload("res://scripts_and_scenes/effects/grass_effect.tscn")
+
+func create_effect(caller: Node, effect_scene: PackedScene):
+	var effect: Node = effect_scene.instantiate()
+	caller.get_parent().add_child(effect)
+	effect.global_position = caller.global_position
 	
 func _on_hurtbox_area_entered(_area:Area2D):
-	create_grass_effect()
+	create_effect(self, grass_effect_scene) 
 	queue_free()
