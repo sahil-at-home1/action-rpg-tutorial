@@ -9,3 +9,4 @@ func _ready():
 		if temp:
 			layer_name = temp
 			collision_map[layer_name] = i
+	print(collision_map)
