@@ -1,8 +1,8 @@
-[gd_scene load_steps=46 format=3 uid="uid://cgl2li00kx4nh"]
+[gd_scene load_steps=46 format=3 uid="uid://xrgpg8omnfdu"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_3xvyr"]
 [ext_resource type="Texture2D" uid="uid://wcla3tc7052k" path="res://Action RPG Resources/Player/Player.png" id="2_gh2dr"]
-[ext_resource type="PackedScene" uid="uid://bxb1ku6cti386" path="res://hitbox.tscn" id="3_6psau"]
+[ext_resource type="PackedScene" path="res://hitbox.tscn" id="3_6psau"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xrrpf"]
 radius = 6.0
@@ -294,6 +294,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_0dyrb"]
 resource_name = "roll_left"
 length = 0.5
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
