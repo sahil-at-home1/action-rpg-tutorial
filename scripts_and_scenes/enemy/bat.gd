@@ -7,10 +7,11 @@ enum State {
 }
 
 const death_effect_scene: PackedScene = preload("res://scripts_and_scenes/effects/bat_death_effect.tscn")
-@export var max_speed : float = 50
-@export var acceleration: float = 150 
-@export var friction: float = 200 
+@export var max_speed : float = 70
+@export var acceleration: float = 5
+@export var friction: float = 5 
 
+@onready var sprite: AnimatedSprite2D = $bat_sprite
 @onready var knockback: Vector2 = Vector2.ZERO
 @onready var hurtbox: Area2D = $Hurtbox
 @onready var stats: Node = $Stats
@@ -25,8 +26,8 @@ func _ready():
 
 func _physics_process(_delta):
 	knockback = knockback.move_toward(Vector2.ZERO, friction)
-	velocity = knockback
-	move_and_slide()
+	if knockback.length() > 0:
+		velocity = knockback
 
 	match state:
 		State.IDLE:
@@ -37,10 +38,13 @@ func _physics_process(_delta):
 		State.CHASE:
 			var player: Node2D = pdz.player
 			if player != null:
-				print("Bat: player  at " + str(player.global_position))
 				var dir: Vector2 = (player.global_position - global_position).normalized()
 				velocity = velocity.move_toward(dir * max_speed, acceleration)
-				move_and_slide()
+			else:
+				state = State.IDLE
+			sprite.flip_h = velocity.x < 0
+
+	move_and_slide()
 
 func seek_player():
 	if pdz.can_see_player():

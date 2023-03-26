@@ -10,11 +10,9 @@ func _ready():
 
 func _on_player_detection_zone_body_entered(body: Node2D):
 	player = body
-	print("PDZ: player  at " + str(player.global_position))
 
 func _on_player_detection_zone_body_exited(_body: Node2D):
 	player = null
-	print("PDZ: player left zone")
 
 func can_see_player() -> bool:
 	return player != null
