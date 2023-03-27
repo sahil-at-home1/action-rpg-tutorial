@@ -29,6 +29,9 @@ enum Direction {
 
 func _ready() -> void:
 	animation_tree.active = true
+	# set movement collisions
+	self.set_collision_layer_value(PlayerVars.collision_map["player"], true)
+	self.set_collision_mask_value(PlayerVars.collision_map["world"], true)
 
 	# setting up hurtbox
 	stats.connect("health_depleted", queue_free)

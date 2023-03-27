@@ -21,6 +21,9 @@ const death_effect_scene: PackedScene = preload("res://scripts_and_scenes/effect
 @onready var pdz: Variant = $player_detection_zone
 
 func _ready():
+	# set movement collisions
+	self.set_collision_layer_value(PlayerVars.collision_map["enemy"], true)
+	self.set_collision_mask_value(PlayerVars.collision_map["world"], true)
 	# hitbox
 	hitbox.set_collision_layer_value(PlayerVars.collision_map["enemy_hitbox"], true)
 	# hurtbox

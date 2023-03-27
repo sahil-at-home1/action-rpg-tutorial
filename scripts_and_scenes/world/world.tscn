@@ -876,8 +876,14 @@ y_sort_enabled = true
 [node name="Bat" parent="y-sort node/not-grass/bats" instance=ExtResource("5_psko0")]
 position = Vector2(189, 38)
 
+[node name="Bat2" parent="y-sort node/not-grass/bats" instance=ExtResource("5_psko0")]
+position = Vector2(233, 91)
+
+[node name="Bat3" parent="y-sort node/not-grass/bats" instance=ExtResource("5_psko0")]
+position = Vector2(43, 71)
+
 [node name="Player" parent="y-sort node/not-grass" instance=ExtResource("2_gy132")]
-position = Vector2(189, 26)
+position = Vector2(136, 100)
 
 [node name="bushes" type="Node2D" parent="y-sort node/not-grass"]
 y_sort_enabled = true
