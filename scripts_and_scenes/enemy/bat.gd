@@ -7,6 +7,7 @@ enum State {
 }
 
 const death_effect_scene: PackedScene = preload("res://scripts_and_scenes/effects/bat_death_effect.tscn")
+
 @export var max_speed : float = 70
 @export var acceleration: float = 5
 @export var friction: float = 5 
@@ -24,7 +25,7 @@ func _ready():
 	hitbox.set_collision_layer_value(PlayerVars.collision_map["enemy_hitbox"], true)
 	# hurtbox
 	stats.health_depleted.connect(_on_health_depleted)
-	hurtbox.set_collision_layer_value(PlayerVars.collision_map["enemy_hurtbox"], true)
+	# hurtbox.set_collision_layer_value(PlayerVars.collision_map["enemy_hurtbox"], true)
 	hurtbox.set_collision_mask_value(PlayerVars.collision_map["player_hitbox"], true)
 	velocity = Vector2.ZERO
 
@@ -56,6 +57,8 @@ func seek_player():
 
 func _on_hurtbox_area_entered(area: Area2D):
 	knockback = area.knockback_vector * 100
+	hurtbox.start_invincibility(0.1)
+	hurtbox.create_hit_effect()
 	# godot convention: call down, signal up (on node tree)
 	stats.set_health(stats.health - area.damage)
 

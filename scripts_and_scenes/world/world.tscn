@@ -877,7 +877,7 @@ y_sort_enabled = true
 position = Vector2(189, 38)
 
 [node name="Player" parent="y-sort node/not-grass" instance=ExtResource("2_gy132")]
-position = Vector2(116, 75)
+position = Vector2(189, 26)
 
 [node name="bushes" type="Node2D" parent="y-sort node/not-grass"]
 y_sort_enabled = true

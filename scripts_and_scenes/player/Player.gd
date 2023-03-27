@@ -32,7 +32,6 @@ func _ready() -> void:
 
 	# setting up hurtbox
 	stats.connect("health_depleted", queue_free)
-	hurtbox.set_collision_layer_value(PlayerVars.collision_map["player_hurtbox"], true)
 	hurtbox.set_collision_mask_value(PlayerVars.collision_map["enemy_hitbox"], true)
 	hurtbox.connect("area_entered", _on_hurtbox_area_entered)
 
@@ -114,4 +113,5 @@ func _on_animation_tree_animation_finished(anim_name):
 
 func _on_hurtbox_area_entered(_area: Area2D):
 	stats.health -= 1
-	print(stats.health)
+	hurtbox.start_invincibility(0.5)
+	hurtbox.create_hit_effect()
