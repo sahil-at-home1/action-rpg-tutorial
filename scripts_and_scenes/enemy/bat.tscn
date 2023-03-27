@@ -1,11 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://4aykinbtotkm"]
+[gd_scene load_steps=17 format=3 uid="uid://4aykinbtotkm"]
 
 [ext_resource type="Texture2D" uid="uid://cq7xoowo67v77" path="res://Action RPG Resources/Enemies/Bat.png" id="1_pl645"]
 [ext_resource type="Script" path="res://scripts_and_scenes/enemy/bat.gd" id="1_tfdbc"]
 [ext_resource type="Texture2D" uid="uid://dtv3y8t4k5gw2" path="res://Action RPG Resources/Shadows/SmallShadow.png" id="2_wonys"]
 [ext_resource type="PackedScene" uid="uid://btw2rjrvteisl" path="res://scripts_and_scenes/boxes/hurtbox.tscn" id="3_hbwq3"]
-[ext_resource type="PackedScene" path="res://scripts_and_scenes/common/stats.tscn" id="5_l5wtk"]
+[ext_resource type="PackedScene" uid="uid://b48kfgk8srvww" path="res://scripts_and_scenes/common/stats.tscn" id="5_l5wtk"]
 [ext_resource type="PackedScene" uid="uid://bmvgx2xrurgkr" path="res://scripts_and_scenes/enemy/player_detection_zone.tscn" id="6_fl6f3"]
+[ext_resource type="PackedScene" path="res://scripts_and_scenes/boxes/hitbox.tscn" id="7_pb6ru"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4h6sp"]
 atlas = ExtResource("1_pl645")
@@ -57,6 +58,9 @@ radius = 4.0
 radius = 7.0
 height = 18.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_k5rvc"]
+radius = 5.09902
+
 [node name="Bat" type="CharacterBody2D"]
 collision_layer = 32
 collision_mask = 0
@@ -90,6 +94,13 @@ shape = SubResource("CapsuleShape2D_0hc62")
 
 [node name="player_detection_zone" parent="." instance=ExtResource("6_fl6f3")]
 
+[node name="Hitbox" parent="." instance=ExtResource("7_pb6ru")]
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2(0, -16)
+shape = SubResource("CircleShape2D_k5rvc")
+
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 
 [editable path="Hurtbox"]
+[editable path="Hitbox"]

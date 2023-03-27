@@ -14,11 +14,15 @@ const death_effect_scene: PackedScene = preload("res://scripts_and_scenes/effect
 @onready var sprite: AnimatedSprite2D = $bat_sprite
 @onready var knockback: Vector2 = Vector2.ZERO
 @onready var hurtbox: Area2D = $Hurtbox
+@onready var hitbox: Area2D = $Hitbox
 @onready var stats: Node = $Stats
 @onready var state: State = State.CHASE
 @onready var pdz: Variant = $player_detection_zone
 
 func _ready():
+	# hitbox
+	hitbox.set_collision_layer_value(PlayerVars.collision_map["enemy_hitbox"], true)
+	# hurtbox
 	stats.health_depleted.connect(_on_health_depleted)
 	hurtbox.set_collision_layer_value(PlayerVars.collision_map["enemy_hurtbox"], true)
 	hurtbox.set_collision_mask_value(PlayerVars.collision_map["player_hitbox"], true)

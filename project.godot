@@ -27,6 +27,10 @@ window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
 
+[dotnet]
+
+project/assembly_name="action-rpg-tutorial"
+
 [input]
 
 ui_left={
@@ -76,3 +80,4 @@ roll={
 2d_physics/layer_4="enemy_hurtbox"
 2d_physics/layer_5="player_hitbox"
 2d_physics/layer_6="enemy"
+2d_physics/layer_7="enemy_hitbox"

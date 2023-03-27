@@ -10,7 +10,8 @@ extends CharacterBody2D
 @onready var state: State = State.MOVE
 @onready var roll_vector: Vector2 = Vector2.DOWN
 @onready var sword_hitbox: Area2D = $HitboxPivot/SwordHitbox
-
+@onready var stats: Node = $player_stats
+@onready var hurtbox: Node = $Hurtbox
 
 enum State {
 	MOVE,
@@ -28,6 +29,13 @@ enum Direction {
 
 func _ready() -> void:
 	animation_tree.active = true
+
+	# setting up hurtbox
+	stats.connect("health_depleted", queue_free)
+	hurtbox.set_collision_layer_value(PlayerVars.collision_map["player_hurtbox"], true)
+	hurtbox.set_collision_mask_value(PlayerVars.collision_map["enemy_hitbox"], true)
+	hurtbox.connect("area_entered", _on_hurtbox_area_entered)
+
 	# set up animation roll slowdown method calls
 	for direction in Direction:
 		var anim_name: String = "roll_" + String(direction).to_lower()
@@ -40,8 +48,6 @@ func _ready() -> void:
 		}, 0)
 
 func _process(_delta: float) -> void:
-	# if self.state == State.ROLL or self.state == State.ROLL_SLOWDOWN:
-	# 	print(self.velocity)
 
 	# start in move state
 	match state:
@@ -105,3 +111,7 @@ func _on_animation_tree_animation_finished(anim_name):
 		state = State.MOVE
 	elif "attack" in anim_name:
 		state = State.MOVE
+
+func _on_hurtbox_area_entered(_area: Area2D):
+	stats.health -= 1
+	print(stats.health)
