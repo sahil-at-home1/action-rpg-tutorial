@@ -1,10 +1,14 @@
-[gd_scene format=3 uid="uid://douahecspin2e"]
+[gd_scene load_steps=2 format=3 uid="uid://douahecspin2e"]
 
-[node name="health_ui" type="Label"]
-offset_right = 40.0
-offset_bottom = 23.0
+[ext_resource type="Script" path="res://scripts_and_scenes/common/health_ui.gd" id="1_mkw83"]
 
-[node name="Control" type="Control" parent="."]
+[node name="health_ui" type="Control"]
+layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("1_mkw83")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0

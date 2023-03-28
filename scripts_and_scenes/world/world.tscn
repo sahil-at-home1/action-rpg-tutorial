@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://c0gd8ghwol5qh"]
+[gd_scene load_steps=14 format=3 uid="uid://c0gd8ghwol5qh"]
 
 [ext_resource type="Texture2D" uid="uid://bpwhwfwrphatk" path="res://Action RPG Resources/World/GrassBackground.png" id="1_fvwtk"]
 [ext_resource type="Texture2D" uid="uid://c5qqlsne7sm3m" path="res://Action RPG Resources/World/DirtTileset.png" id="2_4nj7p"]
 [ext_resource type="PackedScene" uid="uid://xpryjbxtm3em" path="res://scripts_and_scenes/player/player.tscn" id="2_gy132"]
 [ext_resource type="PackedScene" uid="uid://wx5qmlqrm1yh" path="res://scripts_and_scenes/world/Bush.tscn" id="2_x50su"]
 [ext_resource type="Texture2D" uid="uid://ce5qb8u0pwxei" path="res://Action RPG Resources/World/CliffTileset.png" id="3_jdhd7"]
+[ext_resource type="PackedScene" uid="uid://douahecspin2e" path="res://scripts_and_scenes/common/health_ui.tscn" id="4_d6473"]
 [ext_resource type="PackedScene" uid="uid://4aykinbtotkm" path="res://scripts_and_scenes/enemy/bat.tscn" id="5_psko0"]
 [ext_resource type="PackedScene" uid="uid://c0shnwwwunnv7" path="res://scripts_and_scenes/world/grass.tscn" id="6_cghfa"]
 
@@ -844,6 +845,8 @@ tile_set = SubResource("TileSet_ltgqd")
 cell_quadrant_size = 32
 format = 2
 layer_0/tile_data = PackedInt32Array(-65534, 1, 0, 2, 1, 2, -65532, 131073, 3, -65533, 327681, 0, 327685, 393217, 3, 262149, 1, 0, 262150, 393217, 2, 196614, 1, 0, 327687, 65537, 2, 327686, 65537, 2, 327688, 65537, 2, 327689, 65537, 2, 262153, 65537, 0, 262154, 131073, 0, 327690, 131073, 2, 327682, 1, 3, 327683, 65537, 3, 327684, 65537, 3, 3, 131073, 2, 262151, 327681, 2, 262152, 65537, 0, 196615, 131073, 0)
+
+[node name="health_ui" parent="." instance=ExtResource("4_d6473")]
 
 [node name="y-sort node" type="Node2D" parent="."]
 
