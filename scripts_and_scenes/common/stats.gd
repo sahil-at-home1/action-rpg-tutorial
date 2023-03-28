@@ -1,14 +1,16 @@
 extends Node
 
-@export var max_health: int = 1
-@onready var health: int = max_health: 
-	get = get_health, set = set_health
+@export var max_health: int = 1: set = set_max_health
+var health: int = 0: set = set_health
 		
 signal health_depleted
 signal health_changed(value)
+signal max_health_changed(value)
 
-func get_health() -> int:
-	return health
+func set_max_health(value: int):
+	max_health = value
+	health = min(health, max_health)
+	max_health_changed.emit(max_health)
 
 func set_health(value: int) -> void:
 	health = value
@@ -17,4 +19,4 @@ func set_health(value: int) -> void:
 		health_depleted.emit()
 
 func _ready():
-	pass
+	health = max_health
