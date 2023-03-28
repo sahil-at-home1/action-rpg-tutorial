@@ -98,6 +98,7 @@ func roll_slowdown() -> void:
 	self.velocity = self.velocity.move_toward(Vector2.ZERO, FRICTION * 2)
 	# print("slowing!")
 	self.move_and_slide()
+	stats.max_health += 1
 
 func roll_state() -> void:
 	# self.velocity = self.roll_vector * MAX_SPEED

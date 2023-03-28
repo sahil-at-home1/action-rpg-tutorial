@@ -9,6 +9,7 @@ signal max_health_changed(value)
 
 func set_max_health(value: int):
 	max_health = value
+	# make sure current health is higher than max health
 	health = min(health, max_health)
 	max_health_changed.emit(max_health)
 

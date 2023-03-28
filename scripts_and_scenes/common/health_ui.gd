@@ -17,7 +17,7 @@ func set_hearts(value: int):
 	if heart_ui_full != null:
 		heart_ui_full.size.x = hearts_ui * heart_full_size.x
 
-func set_max_hearts(value):
+func set_max_hearts(value: int):
 	max_hearts_ui = max(1, value)
 	var heart_empty_size: Vector2 = heart_ui_empty.texture.get_size()
 	if heart_ui_empty != null:
