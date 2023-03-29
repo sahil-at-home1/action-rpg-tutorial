@@ -22,6 +22,7 @@ func set_max_hearts(value: int):
 	var heart_empty_size: Vector2 = heart_ui_empty.texture.get_size()
 	if heart_ui_empty != null:
 		heart_ui_empty.size.x = max_hearts_ui * heart_empty_size.x
+		print("changing max health ui size to " + str(heart_ui_empty.size.x))
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
