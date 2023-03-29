@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://xpryjbxtm3em"]
+[gd_scene load_steps=51 format=3 uid="uid://xpryjbxtm3em"]
 
 [ext_resource type="Script" path="res://scripts_and_scenes/player/Player.gd" id="1_3xvyr"]
 [ext_resource type="Texture2D" uid="uid://wcla3tc7052k" path="res://Action RPG Resources/Player/Player.png" id="2_gh2dr"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scripts_and_scenes/boxes/sword_hitbox.gd" id="4_fwq44"]
 [ext_resource type="PackedScene" uid="uid://bqcuaxcq2mc0v" path="res://scripts_and_scenes/player/player_stats.tscn" id="5_mtyas"]
 [ext_resource type="PackedScene" uid="uid://btw2rjrvteisl" path="res://scripts_and_scenes/boxes/hurtbox.tscn" id="6_5ni4e"]
+[ext_resource type="Texture2D" uid="uid://c6plpm2bk1kj5" path="res://Action RPG Resources/Shadows/MediumShadow.png" id="7_si6m7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xrrpf"]
 radius = 6.0
@@ -595,6 +596,11 @@ disabled = true
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 shape = SubResource("CapsuleShape2D_o8vxb")
+
+[node name="shadow" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, 11)
+texture = ExtResource("7_si6m7")
 
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
 

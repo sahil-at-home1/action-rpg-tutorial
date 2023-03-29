@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://wx5qmlqrm1yh"]
+[gd_scene load_steps=4 format=3 uid="uid://wx5qmlqrm1yh"]
 
+[ext_resource type="Texture2D" uid="uid://1fxyy4hlgigm" path="res://Action RPG Resources/Shadows/LargeShadow.png" id="1_dbsdq"]
 [ext_resource type="Texture2D" uid="uid://7x6icwo5ncb" path="res://Action RPG Resources/World/Bush.png" id="1_jsxyu"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6vd0v"]
@@ -9,7 +10,12 @@ radius = 8.0
 position = Vector2(0, -10)
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="shadow" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, 9)
+texture = ExtResource("1_dbsdq")
+
+[node name="bush" type="Sprite2D" parent="."]
 texture_filter = 1
 texture = ExtResource("1_jsxyu")
 

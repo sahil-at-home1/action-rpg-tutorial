@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c0gd8ghwol5qh"]
+[gd_scene load_steps=15 format=3 uid="uid://c0gd8ghwol5qh"]
 
 [ext_resource type="Texture2D" uid="uid://bpwhwfwrphatk" path="res://Action RPG Resources/World/GrassBackground.png" id="1_fvwtk"]
 [ext_resource type="Texture2D" uid="uid://c5qqlsne7sm3m" path="res://Action RPG Resources/World/DirtTileset.png" id="2_4nj7p"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://douahecspin2e" path="res://scripts_and_scenes/common/health_ui.tscn" id="4_d6473"]
 [ext_resource type="PackedScene" uid="uid://4aykinbtotkm" path="res://scripts_and_scenes/enemy/bat.tscn" id="5_psko0"]
 [ext_resource type="PackedScene" uid="uid://c0shnwwwunnv7" path="res://scripts_and_scenes/world/grass.tscn" id="6_cghfa"]
+[ext_resource type="PackedScene" uid="uid://ccvnclx560dn" path="res://scripts_and_scenes/world/tree.tscn" id="9_edhef"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rpkot"]
 texture = ExtResource("2_4nj7p")
@@ -897,3 +898,15 @@ position = Vector2(0, 0)
 
 [node name="Bush2" parent="y-sort node/not-grass/bushes" instance=ExtResource("2_x50su")]
 position = Vector2(204, -76)
+
+[node name="trees" type="Node2D" parent="y-sort node/not-grass"]
+y_sort_enabled = true
+
+[node name="tree" parent="y-sort node/not-grass/trees" instance=ExtResource("9_edhef")]
+position = Vector2(55, 28)
+
+[node name="tree2" parent="y-sort node/not-grass/trees" instance=ExtResource("9_edhef")]
+position = Vector2(142, 140)
+
+[node name="tree3" parent="y-sort node/not-grass/trees" instance=ExtResource("9_edhef")]
+position = Vector2(305, 6)
