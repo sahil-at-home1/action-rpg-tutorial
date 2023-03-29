@@ -12,7 +12,6 @@ func set_max_health(value: int):
 	# make sure current health is higher than max health
 	health = min(health, max_health)
 	max_health_changed.emit(max_health)
-	print("emitting max health signal to " + str(max_health))
 
 func set_health(value: int) -> void:
 	health = value
