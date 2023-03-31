@@ -44,40 +44,35 @@ func _physics_process(_delta):
 		State.IDLE:
 			velocity = velocity.move_toward(Vector2.ZERO, friction)
 			seek_player()
-			# if wander_controller.get_time_left() == 0:
 			if wander_controller.timer_fired():
-				print(self.name, " in idle, calling bc of timeout")
 				wander_or_idle()
 		State.WANDER:
 			seek_player()
-			# print(self.name, " wandering")
-			# if wander_controller.get_time_left() == 0:
 			if wander_controller.timer_fired():
-				print(self.name, " in wander, calling bc of timeout")
 				wander_or_idle()
-			var dir: Vector2 = global_position.direction_to(wander_controller.target_position) 
-			velocity = velocity.move_toward(dir * max_speed, acceleration)
+			move_toward_point(wander_controller.target_position)
 			# deal with wobble at the end of wander
 			if global_position.distance_squared_to(wander_controller.target_position) <= 1:
-				print(self.name, " calling bc too close")
 				wander_or_idle()
 		State.CHASE:
 			var player: Node2D = pdz.player
 			if player != null:
-				var dir: Vector2 = global_position.direction_to(player.global_position) 
-				velocity = velocity.move_toward(dir * max_speed, acceleration)
+				move_toward_point(player.global_position)
 			else:
 				state = State.IDLE
-			sprite.flip_h = velocity.x < 0
 	if soft_collision.is_colliding():
 		velocity += soft_collision.get_push_vector() * soft_collide_coefficient 
 	move_and_slide()
+
+func move_toward_point(point: Vector2):
+	var dir: Vector2 = global_position.direction_to(point) 
+	velocity = velocity.move_toward(dir * max_speed, acceleration)
+	sprite.flip_h = velocity.x < 0
 
 func wander_or_idle():
 	var state_list: Array[State] = [State.WANDER, State.IDLE]
 	state_list.shuffle()
 	state = state_list[0]
-	print(self.name, " state is now ", state)
 	var time_until_wander: int = randi_range(1, 3)
 	wander_controller.set_wander_timer(time_until_wander)
 

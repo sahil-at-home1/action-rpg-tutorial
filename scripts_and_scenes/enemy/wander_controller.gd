@@ -18,7 +18,6 @@ func update_target_position():
 	target_position = start_position + target_vector
 
 func _on_timer_timeout():
-	print(get_parent().name, " wander timeout")
 	fired = true
 	update_target_position()
 
