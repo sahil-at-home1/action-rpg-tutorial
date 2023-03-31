@@ -11,6 +11,7 @@ const death_effect_scene: PackedScene = preload("res://scripts_and_scenes/effect
 @export var max_speed : float = 70
 @export var acceleration: float = 5
 @export var friction: float = 5 
+@export var soft_collide_coefficient: float = 20 
 
 @onready var sprite: AnimatedSprite2D = $bat_sprite
 @onready var knockback: Vector2 = Vector2.ZERO
@@ -19,6 +20,7 @@ const death_effect_scene: PackedScene = preload("res://scripts_and_scenes/effect
 @onready var stats: Node = $Stats
 @onready var state: State = State.CHASE
 @onready var pdz: Variant = $player_detection_zone
+@onready var soft_collision: Area2D = $soft_collision
 
 func _ready():
 	# set movement collisions
@@ -28,7 +30,6 @@ func _ready():
 	hitbox.set_collision_layer_value(PlayerVars.collision_map["enemy_hitbox"], true)
 	# hurtbox
 	stats.health_depleted.connect(_on_health_depleted)
-	# hurtbox.set_collision_layer_value(PlayerVars.collision_map["enemy_hurtbox"], true)
 	hurtbox.set_collision_mask_value(PlayerVars.collision_map["player_hitbox"], true)
 	velocity = Vector2.ZERO
 
@@ -51,7 +52,8 @@ func _physics_process(_delta):
 			else:
 				state = State.IDLE
 			sprite.flip_h = velocity.x < 0
-
+	if soft_collision.is_colliding():
+		velocity += soft_collision.get_push_vector() * soft_collide_coefficient 
 	move_and_slide()
 
 func seek_player():

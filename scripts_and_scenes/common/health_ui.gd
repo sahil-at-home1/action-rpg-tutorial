@@ -3,7 +3,7 @@ extends Control
 
 @onready var max_hearts_ui = 4: set=set_max_hearts
 @onready var hearts_ui = 4: set=set_hearts
-@onready var player_stats: Node = get_node("../y-sort node/not-grass/Player/player_stats")
+@onready var player_stats: Node = get_node("/root/World/y-sort node/not-grass/Player/player_stats")
 @onready var label: Label = $Label
 @onready var heart_ui_empty: TextureRect = $heart_ui_empty
 @onready var heart_ui_full: TextureRect = $heart_ui_full

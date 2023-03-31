@@ -81,3 +81,4 @@ roll={
 2d_physics/layer_5="player_hitbox"
 2d_physics/layer_6="enemy"
 2d_physics/layer_7="enemy_hitbox"
+2d_physics/layer_8="soft_collisions"
