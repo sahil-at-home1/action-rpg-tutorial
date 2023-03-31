@@ -21,6 +21,7 @@ const death_effect_scene: PackedScene = preload("res://scripts_and_scenes/effect
 @onready var state: State = State.CHASE
 @onready var pdz: Variant = $player_detection_zone
 @onready var soft_collision: Area2D = $soft_collision
+@onready var wander_controller: Node2D = $wander_controller
 
 func _ready():
 	# set movement collisions
@@ -32,6 +33,7 @@ func _ready():
 	stats.health_depleted.connect(_on_health_depleted)
 	hurtbox.set_collision_mask_value(PlayerVars.collision_map["player_hitbox"], true)
 	velocity = Vector2.ZERO
+	wander_or_idle()
 
 func _physics_process(_delta):
 	knockback = knockback.move_toward(Vector2.ZERO, friction)
@@ -42,12 +44,27 @@ func _physics_process(_delta):
 		State.IDLE:
 			velocity = velocity.move_toward(Vector2.ZERO, friction)
 			seek_player()
+			# if wander_controller.get_time_left() == 0:
+			if wander_controller.timer_fired():
+				print(self.name, " in idle, calling bc of timeout")
+				wander_or_idle()
 		State.WANDER:
-			pass
+			seek_player()
+			# print(self.name, " wandering")
+			# if wander_controller.get_time_left() == 0:
+			if wander_controller.timer_fired():
+				print(self.name, " in wander, calling bc of timeout")
+				wander_or_idle()
+			var dir: Vector2 = global_position.direction_to(wander_controller.target_position) 
+			velocity = velocity.move_toward(dir * max_speed, acceleration)
+			# deal with wobble at the end of wander
+			if global_position.distance_squared_to(wander_controller.target_position) <= 1:
+				print(self.name, " calling bc too close")
+				wander_or_idle()
 		State.CHASE:
 			var player: Node2D = pdz.player
 			if player != null:
-				var dir: Vector2 = (player.global_position - global_position).normalized()
+				var dir: Vector2 = global_position.direction_to(player.global_position) 
 				velocity = velocity.move_toward(dir * max_speed, acceleration)
 			else:
 				state = State.IDLE
@@ -55,6 +72,14 @@ func _physics_process(_delta):
 	if soft_collision.is_colliding():
 		velocity += soft_collision.get_push_vector() * soft_collide_coefficient 
 	move_and_slide()
+
+func wander_or_idle():
+	var state_list: Array[State] = [State.WANDER, State.IDLE]
+	state_list.shuffle()
+	state = state_list[0]
+	print(self.name, " state is now ", state)
+	var time_until_wander: int = randi_range(1, 3)
+	wander_controller.set_wander_timer(time_until_wander)
 
 func seek_player():
 	if pdz.can_see_player():
